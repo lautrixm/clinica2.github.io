@@ -1,0 +1,32 @@
+CREATE DATABASE Clinica_Paullier;
+USE Clinica_Paullier;
+
+CREATE TABLE ortodocista(
+  Consultorio INT identity (1,1) PRIMARY KEY,
+  NombreU varchar(50)NOT NULL
+);
+
+CREATE TABLE paciente (
+  ci VARCHAR (30) PRIMARY KEY,
+  NombreP VARCHAR (30) NOT NULL,
+  ApellidoP VARCHAR (100) NOT NULL,
+  Telefono INT (20) NOT NULL,
+  FechaInicial DATE NOT NULL,
+  Tratamientos VARCHAR (500) NOT NULL,
+  CostoTratamiento INT (10) NOT NULL,
+  Antecedentes VARCHAR (300) NOT NULL,
+  Direccion varchar (100),
+  FotoP VARCHAR (200),
+  Descripcion varchar (200),
+);
+
+CREATE TABLE consulta(
+    Numero INT (1,1) PRIMARY KEY,
+    NombreP VARCHAR (30),
+    FechaDeConsulta DATE NOT NULL,
+    HoraDeConsulta TIME NOT NULL,
+    TipoDeTratamiento VARCHAR (150) NOT NULL,
+    Observaciones(500),
+    MontoEntregado INT (10) NOT NULL,
+    FOREIGN KEY (nombreP) references paciente(nombreP)
+);
